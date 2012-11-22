@@ -10,16 +10,18 @@ To install it just run Pip as usual::
     $ pip install graphite-pymetrics
 
 Package requirements:
-* pystatsd==0.1.6
-* gevent
+  - pystatsd==0.1.6
+  - gevent
 
 =====
 Usage
 =====
 Make sure there is a local graphite proxy running - start it at an early point in your application:
 
+
     from metrics.graphite import start_graphite_proxy
     start_graphite_proxy({"host": "graphite.mycompany.com", "port": 2003})
+
 
 The proxy is pystatsd, a local server that receives UDP packets from the metrics client and periodically
 emits data to graphite over TCP.
@@ -29,11 +31,14 @@ Counters
 ~~~~~~~~
 To add a counter for anything anywhere in your code, use Metric.add:
 
+
     from metrics import Metric
 
     Metric.add("foo.bar")
 
+
 Use the @metric decorator to count specific method invocations:
+
 
     from metrics import metric
 
@@ -41,10 +46,12 @@ Use the @metric decorator to count specific method invocations:
     def foo():
         # do stuff here
 
+
 ~~~~~~
 Timing
 ~~~~~~
 There are several ways to log timing. The most naive way is to first measure time manually and then submit it:
+
 
     from metrics import Metric
     import time
@@ -54,9 +61,11 @@ There are several ways to log timing. The most naive way is to first measure tim
     elapsed = time.time() - start
     Metric.timing("do.stuff", elapsed)
 
+
 An easier way is to to let the metric client keep track of time with Metric.start_timing and call done() on the
 returned timing instance. Following is an example for measuring time consumed for every endpoint individually
 in a Flask webapp:
+
 
     from metrics import Metric
     from flask import Blueprint, current_app, request, g
@@ -77,7 +86,9 @@ in a Flask webapp:
         except:
             current_app.logger.error("Timing not available")
 
+
 Similar to the @metric decorator there is a @timing decorator which is used to measure time for specific methods:
+
 
     from metrics import timing
 
