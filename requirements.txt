@@ -1,0 +1,2 @@
+pystatsd==0.1.6
+gevent
