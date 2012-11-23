@@ -8,7 +8,7 @@ finally:
 
 setup(
     name="graphite-pymetrics",
-    version="0.1.0",
+    version="0.1.1",
     description = "A simple Python metrics framework to use with carbon/graphite.",
     long_description = README,
     author="Ronnie Kolehmainen",
