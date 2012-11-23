@@ -18,7 +18,7 @@ setup(
     license="MIT",
     platforms=["any"],
     packages=["metrics", "metrics.test"],
-    requires=["pystatsd(==0.1.6)", "gevent"],
+    install_requires=["pystatsd==0.1.6", "gevent"],
     classifiers=[
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Development Status :: 4 - Beta",
